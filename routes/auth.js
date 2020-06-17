@@ -4,6 +4,9 @@ const router = express.Router();
 
 const { signup, signin, signout, isSignedIn } = require("../controllers/auth");
 
+// Post routes
+
+// Signup route
 router.post(
   "/signup",
   [
@@ -19,6 +22,7 @@ router.post(
   signup
 );
 
+// Signin route
 router.post(
   "/signin",
   [
@@ -28,6 +32,9 @@ router.post(
   ],
   signin
 );
+
+
+// Get routes
 
 router.get("/signout", signout);
 router.get("/signin", signin);

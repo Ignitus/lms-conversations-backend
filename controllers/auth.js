@@ -3,6 +3,7 @@ const User = require("../models/user");
 var jwt = require("jsonwebtoken");
 var expressJwt = require("express-jwt");
 
+// Signup controller
 exports.signup = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -27,6 +28,7 @@ exports.signup = (req, res) => {
   });
 };
 
+// Signout controller
 exports.signout = (req, res) => {
   res.clearCookie("token");
   res.json({
@@ -34,6 +36,8 @@ exports.signout = (req, res) => {
   });
 };
 
+
+// Signin controller
 exports.signin = (req, res) => {
   const { email, password } = req.body;
   const errors = validationResult(req);
@@ -73,13 +77,17 @@ exports.signin = (req, res) => {
   });
 };
 
+
 // protected routes
+
 exports.isSignedIn = expressJwt({
   secret: process.env.SECRET,
   userProperty: "auth"
 });
 
+
 // custom middlewares
+
 exports.isAuthenticated = (req, res, next) => {
   let checker = req.profile && req.auth && req.profile._id == req.auth._id;
   if (!checker) {
