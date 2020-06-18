@@ -1,7 +1,3 @@
-# LMS Conversations Backend
-
-Backend for [LMS Conversations](https://github.com/Ignitus/lms-conversations)
-
-## Architecture
+### LMS Conversations Backend Architecture
 
 ![image for architectures](docs/lms_conv_arch.png)
