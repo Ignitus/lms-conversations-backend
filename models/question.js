@@ -15,7 +15,7 @@ const questionSchema = new mongoose.Schema(
     },
     answers: {
       type: Array,
-      required: false,
+      default: [],
     },
   },
   {
