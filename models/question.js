@@ -13,6 +13,11 @@ const questionSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    category: {
+      type: ObjectId,
+      ref: "Category",
+      required: true,
+    },
     answers: {
       type: Array,
       default: [],
