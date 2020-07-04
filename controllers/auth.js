@@ -17,7 +17,7 @@ exports.signup = (req, res) => {
   user.save((error, user) => {
     if (error) {
       return res.status(400).json({
-        error: "not able to store user in DB"
+        error: "not able to store user in DB, " + error
       });
     }
     res.json({
@@ -83,7 +83,7 @@ exports.signin = (req, res) => {
 exports.isSignedIn = expressJwt({
   secret: process.env.SECRET,
   userProperty: "auth",
-  algorithms: ['RS256']
+  algorithms: ['HS256']
 });
 
 

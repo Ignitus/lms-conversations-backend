@@ -10,13 +10,16 @@ const cors = require("cors");
 // Routes
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");
+const categoryRoutes = require("./routes/category");
+const questionRoutes = require("./routes/question");
 
 // DB Connection
 mongoose
   .connect(process.env.URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    useCreateIndex: true
+    useCreateIndex: true,
+    dbName: "lms_conv"
   })
   .then(() => {
     console.log("DB CONNECTED");
@@ -30,6 +33,8 @@ app.use(cors());
 // Routes
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", questionRoutes);
 
 // PORT
 const port = process.env.PORT || 5000;
